@@ -19,24 +19,26 @@
     <h1>Sorting Algo Visualizer</h1>
 
     <div class="row controlSec">
-      <div class="col-lg-6 ">
+      <div class="col-sm-6 ">
         <label for="">Size of Array:</label>
-        <input id="inpArr" type="range" min=10 max=1000 name="" value="">
+        <input id="inpArr" type="range" min=10 max=200 name="" value="">
 
         <button id="genArr" type="button" name="button">Genrate Array</button>
       </div>
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         <label for="">Select Algorithm:</label><br />
         <select id="inpAlgo">
           <option value="selectionSort">Selection Sort</option>
           <option value="insertionSort">Insertion Sort</option>
         </select>
+        <br>
+        <button id="startVis" type="button" name="button">Start</button>
       </div>
     </div>
 
   </header>
 
-  <section class="visualizer">
+  <section id="visualCon" class="visualizer">
 
   </section>
 </body>
