@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sorting Algo Visualizer</title>
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Local -->
+  <link rel="stylesheet" href="index.css">
+  <script type="text/javascript" src="script/index.js" defer></script>
+
+</head>
+
+<body>
+  <header>
+    <h1>Sorting Algo Visualizer</h1>
+
+    <div class="row controlSec">
+      <div class="col-lg-6 ">
+        <label for="">Size of Array:</label>
+        <input id="inpArr" type="range" min=10 max=1000 name="" value="">
+
+        <button id="genArr" type="button" name="button">Genrate Array</button>
+      </div>
+      <div class="col-lg-6">
+        <label for="">Select Algorithm:</label><br />
+        <select id="inpAlgo">
+          <option value="selectionSort">Selection Sort</option>
+          <option value="insertionSort">Insertion Sort</option>
+        </select>
+      </div>
+    </div>
+
+  </header>
+
+  <section class="visualizer">
+
+  </section>
+</body>
+
+</html>
