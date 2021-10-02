@@ -1,43 +1,47 @@
+//Getting HTML ELements
 const inpArr = document.getElementById("inpArr");
-let arrSize = inpArr.value;
-
 const inpAlgo = document.getElementById("inpAlgo");
-let inpAlgoValue = inpAlgo.value;
 const genArr = document.getElementById("genArr");
-
 const visualCon = document.getElementById("visualCon");
 const startVis = document.getElementById("startVis");
 
-
-let arr = [];
-let bars = [];
+// Variables
+let arrSize = inpArr.value;
+let inpAlgoValue = inpAlgo.value;
+let arr = [];//To store random numbers
+let bars = [];//To store para elements
+var delay = 0;//To give delay between visualization
 
 // Event Listeners
-genArr.addEventListener("click", genrateNewArray);
-inpArr.addEventListener("input", updateArr);
+genArr.addEventListener("click", genrateNewArray);//For genration new Array
+inpArr.addEventListener("input", updateArr);//For Updationg the size of Array
 startVis.addEventListener("click", chooseAlgo);
 
 
-window.onload = updateArr();
+// Functions
+window.onload = updateArr();//gerrating Array on page load
 
+// Genating New array
 function genrateNewArray(){
   visualCon.innerHTML = "";
-  arr = Array.from({length: arrSize}, () => Math.floor(Math.random() * 100)+10);
+  arr = Array.from({length: arrSize}, () => Math.floor(Math.random() * 100)+10);//Pussing random number between 10-110 in array
 
   for(i = 0; i < arrSize; i++){
-    bars[i] = document.createElement("p");
-    visualCon.appendChild(bars[i]);
+    bars[i] = document.createElement("p");//Creating para elements with acts like bars
+    visualCon.appendChild(bars[i]);//Rendering para elements in container
     bars[i].style = " margin:0% " + 0.1 + "%; background-color:#0096FF; width:" + (100/arrSize-(2*0.1)) + "%; height:" + (arr[i]) + "%;";
   }
 }
 
+//Updating Array size by range element(inpArr)
 function updateArr(){
   arrSize = inpArr.value;
   genrateNewArray();
 }
 
+//Chooing Which algo to apply by user
 function chooseAlgo(){
-  delay = 0;//the should be zero before starting
+  delay = 0;//delay should be zero before starting
 
   inpAlgoValue = inpAlgo.value;
 
@@ -47,44 +51,8 @@ function chooseAlgo(){
   }
 }
 
-// Sorting Algos
-function selectionSort(){
-  for(i = 0; i < arrSize; i++){
-    changeBar("#FF3821", arr[i], bars[i]);
 
-    let minH = i;
-
-    for(j = i+1; j < arrSize; j++){
-      changeBar("#FFFF00", arr[j], bars[j]);
-
-      if(arr[minH] > arr[j]){
-
-        if(minH != i){
-          changeBar("#0096FF", arr[minH], bars[minH]);
-        }
-        changeBar("#FF3821", arr[j], bars[j]);
-        minH = j;
-
-      }else{
-        changeBar("#0096FF", arr[j], bars[j]);
-      }
-
-    }
-
-    if(minH != i){
-
-      [arr[i], arr[minH]] = [arr[minH], arr[i]]
-
-      changeBar("#AAFF00", arr[i], bars[i]);
-      changeBar("#0096FF", arr[minH], bars[minH]);
-    }
-    changeBar("#AAFF00", arr[i], bars[i]);
-  }
-}
-
-
-//Changing bars
-var delay = 0;
+//Changing bars used by algos
 function changeBar(color, height, bar){
   window.setTimeout(() => {
     bar.style= "width:" + (100/arrSize-(2*0.1)) + "%; height:" + height + "%; background-color:" + color + "; margin:0% " + 0.1 + "%;";
